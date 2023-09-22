@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: 'Inclusive Sans', sans-serif;
+    overflow: hidden;
+    /* Hide overflow to prevent scrollbars */
+}
+
+header {
+    height: 15vh;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.index-main {
+    display: flex;
+    /* Use Flexbox for centering */
+    justify-content: center;
+    /* Center content horizontally */
+    align-items: center;
+    /* Center content vertically */
+    height: 75vh;
+}
+
+.navbar {
+    background-color: white;
+    /* White background for the navbar */
+    display: flex;
+    /* Display the list horizontally */
+    align-items: center;
+    /* Center items vertically */
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    /* Add border-radius to make it oblong */
+    position: fixed;
+    top: 30px;
+    /* Adjust top and right values as needed */
+    right: 40px;
+    z-index: 1
+}
+
+/* Style the navigation list */
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* Display list items horizontally */
+}
+
+/* Style the navigation list items */
+.navbar li {
+    margin-left: 20px;
+    /* Add some spacing between items */
+    margin-right: 20px;
+    /* Add some spacing between items */
+    display: flex;
+    /* Use flexbox to center items vertically */
+    align-items: center;
+    /* Center items vertically */
+    text-align: center;
+    /* Center text horizontally */
+    font-size: 20px;
+}
+
+/* Style the navigation links */
+.navbar a {
+    color: #333;
+    /* Link color */
+    text-decoration: none;
+    /* Remove underline */
+    position: relative;
+    /* Create a stacking context for the indicator */
+    z-index: 1;
+    /* Ensure links are above other elements */
+    display: inline-block;
+    padding-bottom: 5px;
+    /* Add padding to create space for the line */
+}
+
+/* Style the indicator (initially hidden) */
+.navbar ul li a::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(133, 172, 201);
+    /* Blue indicator color */
+    height: 3px;
+    /* Height of the indicator */
+    width: 0;
+    /* Initial width of the indicator (hidden) */
+    transition: width 0.3s;
+    /* Smooth transition for the width */
+    bottom: 0;
+    left: 0;
+    /* Start from the left of the link */
+}
+
+/* Set the indicator width when a link is hovered */
+.navbar ul li a:hover::after {
+    width: 100%;
+    /* Expand the width on hover */
+}
+
+.center-element {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1
+}
+
+.profile-image {
+    width: 40%;
+    height: auto;
+    max-width: 40%;
+    max-height: 40%;
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bubble-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Bubbles should appear behind the image */
+}
+
+.bubble {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: rise 5s linear infinite, move 5s linear infinite;
+    line-height: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes rise {
+    0% {
+        bottom: -40px;
+        opacity: 0;
+    }
+
+    100% {
+        bottom: 100vh;
+        opacity: 1;
+    }
+}
+
+@keyframes move {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(calc(-50% + 50px));
+    }
+}
+
+.journey-block {
+    border-radius: 30px;
+    width: 200px;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-block {
+    width: 100px;
+    height: 100px;
+}
+
+.medium-block {
+    width: 200px;
+    height: 200px;
+}
+
+.large-block {
+    width: 750px;
+    height: 300px;
+}
+
+.block-content {
+    padding: 25px;
+    border-radius: 40px;
+}
+
+p {
+    font-size: 16px;
+}

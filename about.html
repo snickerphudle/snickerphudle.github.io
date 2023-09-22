@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>William Nguyen</title>
+</head>
+
+<body>
+    <!-- Load Navbar -->
+    <div id="header-placeholder"></div>
+    <script>
+        $(function () {
+            $("#header-placeholder").load("header.html");
+        });
+    </script>
+
+    <!-- Content -->
+    <div class="journey">
+        <div class="journey-block large-block">
+            <div class="block-content">
+                <p>Hey there! I'm Will. Well, that's me as a baby, but you get the gist. Welcome to my website! Nice to
+                    meet you</p>
+            </div>
+            <img src="baby_me.JPG" alt="William Nguyen as a baby" class="block-content">
+        </div>
+    </div>
+
+    <!-- loads bubbles into the background -->
+    <div class="bubble-container" id="bubble-container"></div>
+    <script src="loadBubbles.js"></script>
+</body>
+
+</html>
