@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-    font-family: 'Inclusive Sans', sans-serif;
+    font-family: 'Onest', sans-serif;
 }
 
 header {
@@ -11,6 +11,14 @@ header {
 
 h1 {
     font-size: 80px;
+}
+
+.timeline-content {
+    font-size: 20px;
+}
+
+.name-title {
+    letter-spacing: 3px;
 }
 
 .index-main {
@@ -145,7 +153,7 @@ h1 {
 
 @keyframes rise {
     0% {
-        bottom: -40px;
+        bottom: -200px;
         opacity: 0;
     }
 
@@ -192,21 +200,30 @@ h1 {
 
     padding: 20px;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
     text-align: center;
     font-size: 50px;
-    font-weight: bold;
 }
 
 .timeline {
     display: flex;
-    flex-wrap: wrap; /* Allow blocks to wrap to the next line */
-    justify-content: space-between; /* Adjust alignment as needed */
-    align-items: flex-start; /* Adjust alignment as needed */
+    flex-wrap: wrap;
+    /* Allow blocks to wrap to the next line */
+    justify-content: space-between;
+    /* Adjust alignment as needed */
+    align-items: flex-start;
+    /* Adjust alignment as needed */
     position: relative;
     width: 100%;
     overflow: hidden;
+}
+
+.timeline-block-title {
+    text-align: center;
+    font-size: 35px;
 }
 
 .block-content {
@@ -216,4 +233,26 @@ h1 {
 
 p {
     font-size: 16px;
+}
+
+.swiper {
+    border-radius: 20px;
+    width: 30%;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    background: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.swiper-slide > img {
+    width: 120%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+
 }

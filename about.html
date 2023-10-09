@@ -7,8 +7,11 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="loadBubbles.js" defer></script>
+    <script src="carousel.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <title>William Nguyen</title>
 </head>
 
@@ -21,23 +24,111 @@
         });
     </script>
 
-    <!-- Content -->
-    <div class="timeline">
-        <div class="timeline-row">
-            <div class="timeline-block">
-                <div class="block-content">
-                    <p>Hey there! I'm Will. Well, that's me as a baby, but you get the gist. Welcome to my website! Nice to meet you</p>
-                </div>
-                <img src="./images/baby_me.JPG" alt="William Nguyen as a baby" class="block-content">
+
+    <div class="timeline-row">
+        <div class="timeline-block">
+            <div class="block-content">
+                <h1 class="timeline-block-title">A Smile Is Born!</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby. It's really nice to meet
+                    you! I really appreciate you for taking the time to visit my site. I love having guests, and
+                    you're no exception. </p>
+                <p class="timeline-content">While you're here... let's take a trip down memory lane, and I'll show
+                    you all the amazing experiences that have made me ME!</p>
             </div>
-            <div class="date-block">MAY<br>there</div>
+            <img src="./images/baby_me.JPG" alt="William Nguyen as a baby" class="block-content">
         </div>
+        <div class="date-block">SEPT 2003</div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="date-block">SEPT 2006</div>
+        <div class="timeline-block">
+            <div class="block-content">
+                <h1 class="timeline-block-title">My First Computer!</h1>
+                <p class="timeline-content">Since I was a kid, I have always loved to play. That's how I learned
+                    growing up! I played pretty much everything fromas dfdsafsaf sdafsd dsaadsfahfjahf kad shfdfhaldahfj
+                    hfdajsklhls afhfsla
+                </p>
+            </div>
+            <img src="./images/computer.JPG" alt="William Nguyen as a baby" class="block-content">
+        </div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="timeline-block">
+            <img src="./images/nature.JPG" alt="William Nguyen as a baby" class="block-content">
+            <div class="block-content">
+                <h1 class="timeline-block-title">Willy Explores the Wilderness!</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+        </div>
+        <div class="date-block">JULY 2011</div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="date-block">DEC 2018</div>
+        <div class="timeline-block">
+            <div class="block-content">
+                <h1 class="timeline-block-title">My First YouTube Video!</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+            <iframe width="560" src="https://www.youtube.com/embed/yr4a4DAXqdc?si=MLnCv-VMIS1sxxk_"
+                class="block-content" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="timeline-block">
+            <img src="./images/berkeley_pic.JPG" alt="William Nguyen as a baby" class="block-content">
+            <div class="block-content">
+                <h1 class="timeline-block-title">I Become a BEAR!</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+        </div>
+        <div class="date-block">AUG 2021</div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="date-block">MAY 2023</div>
+        <div class="timeline-block">
+            <img src="./images/aveva.JPG" alt="William Nguyen as a baby" class="block-content">
+            <div class="block-content">
+                <h1 class="timeline-block-title">My Parents Finally Get Their ROI</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+        </div>
+    </div>
+    <div class="timeline-row">
+        <div class="timeline-block">
+            <div class="block-content">
+                <h1 class="timeline-block-title">My First Baby</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+            <img src="./images/budbase_pitch.jpeg" alt="William Nguyen as a baby" class="block-content">
+        </div>
+        <div class="date-block">AUG 2023</div>
+    </div>
+
+    <div class="timeline-row">
+        <div class="date-block">NOW</div>
+        <div class="timeline-block">
+            <div class="block-content">
+                <h1 class="timeline-block-title">What Am I Up To Now?</h1>
+                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby, but you get the gist.
+                    Welcome to my website! Nice to meet you</p>
+            </div>
+            <img src="./images/chill.JPG" alt="William Nguyen as a baby" class="block-content">
+        </div>
+    </div>
     </div>
 
     <!-- loads bubbles into the background -->
     <div class="bubble-container" id="bubble-container"></div>
-    <script src="loadBubbles.js"></script>
-    <script src="scroll.js"></script>
 </body>
 
 </html>
