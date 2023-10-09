@@ -17,10 +17,6 @@ h1 {
     font-size: 20px;
 }
 
-.name-title {
-    letter-spacing: 3px;
-}
-
 .index-main {
     display: flex;
     /* Use Flexbox for centering */
@@ -132,13 +128,11 @@ h1 {
 }
 
 .bubble-container {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 0; /* Change 'top' to 'bottom' and set it to 0 */
     left: 0;
     width: 100%;
-    height: 100%;
     z-index: -1;
-    /* Bubbles should appear behind the image */
 }
 
 .bubble {
@@ -153,15 +147,16 @@ h1 {
 
 @keyframes rise {
     0% {
-        bottom: -200px;
+        bottom: -100%;
         opacity: 0;
     }
 
     100% {
-        bottom: 100vh;
+        bottom: 100vh; /* Change '100vh' to '0' to position the bubbles at the bottom */
         opacity: 1;
     }
 }
+
 
 @keyframes move {
 
@@ -224,6 +219,8 @@ h1 {
 .timeline-block-title {
     text-align: center;
     font-size: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .block-content {
@@ -235,24 +232,77 @@ p {
     font-size: 16px;
 }
 
-.swiper {
-    border-radius: 20px;
-    width: 30%;
-    overflow: hidden;
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.swiper-slide {
-    background: gray;
+.profile-image {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 0.5s forwards; /* Delay the image animation */
+}
+
+/* Initial opacity of 0 for all letters */
+.name-title { 
+    opacity: 0;
+    letter-spacing: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 1s forwards; /* Delay the image animation */
+}
+
+#oblong1 {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 1.5s forwards; /* Delay the image animation */
+}
+
+#oblong2 {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 2s forwards; /* Delay the image animation */
+}
+
+#oblong3 {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 2.5s forwards; /* Delay the image animation */
+}
+
+#oblong4 {
+    opacity: 0;
+    transition: opacity 1s ease; /* Add a smooth transition effect */
+    animation: fadeInImage 1s ease 3s forwards; /* Delay the image animation */
+}
+
+.oblong {
+    width: 200px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    background-color: black; /* Background color for the oblong */
+    border-radius: 40px; /* Half of the height to create a rounded rectangle */
+    text-align: center;
+    line-height: 80px; /* Vertically center the text */
+    color: #fff; /* Text color */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Font weight */
+    margin: 20px auto; /* Adjust margin as needed to position it properly */
+  }
+
+  .green {
+    background-color: #b8d8be;
+  }
+
+  .blue {
+    background-color: #98bad5
+  }
+
+  .titles-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-}
-
-.swiper-slide > img {
-    width: 120%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-
-}
+    flex-direction: row;
+  }
