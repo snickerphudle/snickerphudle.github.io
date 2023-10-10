@@ -10,7 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Onest&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="loadBubbles.js" defer></script>
-    <script src="carousel.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to handle the intersection observer callback
+            function handleIntersection(entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        $(entry.target)
+                            .addClass("fadeIn") // Add a class to trigger the animation
+                            .removeClass("invisible"); // Optionally, remove any class that hides the element
+                        observer.unobserve(entry.target); // Stop observing once the element is visible
+                    }
+                });
+            }
+
+            // Create an Intersection Observer
+            const observer = new IntersectionObserver(handleIntersection, {
+                root: null, // Use the viewport as the root
+                rootMargin: "0px", // No margin
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            });
+
+            // Observe all elements with the class "timeline-row"
+            $(".timeline-row").each(function () {
+                observer.observe(this);
+            });
+        });
+    </script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <title>William Nguyen</title>
 </head>
@@ -24,158 +52,185 @@
         });
     </script>
 
-
-    <div class="timeline-row">
-        <div class="timeline-block">
-            <div class="block-content">
-                <h1 class="timeline-block-title">A Smile Is Born!</h1>
-                <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby. It's really nice to meet
-                    you! I really appreciate you for taking the time to visit my site. I love having guests, and
-                    you're no exception. </p>
-                <p class="timeline-content">While you're here... let's take a trip down memory lane, and I'll show
-                    you all my favorite experiences that have made me ME!</p>
+    <div class="timeline">
+        <div class="timeline-row">
+            <div class="timeline-block">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">A Smile Is Born!</h1>
+                    <p class="timeline-content">Hey there! I'm Will. Well, that's me as a baby. It's really nice to meet
+                        you! I really appreciate you for taking the time to visit my site. I love having guests, and
+                        you're no exception. </p>
+                    <p class="timeline-content">While you're here... let's take a trip down memory lane, and I'll show
+                        you all my favorite experiences that have made me ME!</p>
+                </div>
+                <img src="./images/baby_me.JPG" alt="William Nguyen as a baby" class="block-content">
             </div>
-            <img src="./images/baby_me.JPG" alt="William Nguyen as a baby" class="block-content">
+            <div class="date-block">SEPT 2003</div>
         </div>
-        <div class="date-block">SEPT 2003</div>
-    </div>
 
-    <div class="timeline-row">
-        <div class="date-block">SEPT 2006</div>
-        <div class="timeline-block">
-            <div class="block-content">
-                <h1 class="timeline-block-title">My First Computer!</h1>
-                <p class="timeline-content">Since I was a kid, I LOVED to play. I played everything, from Mario to
-                    multiplication games on a light-up toy to board games like Exploding Kittens with my family. My
-                    parents wanted me to be curious growing up so
-                    instead of playing with just stuffed animals, they let me play with electronic devices like the toy
-                    computer shown in the image, a light-up keyboard piano, and finally my very own laptop.
-                </p>
-                <p class="timeline-content"> I still reminisce on the days my dad would warn me about viruses
-                    and teach me about the difference between memory and RAM. As a kid, everything went into one ear and
-                    out the other, but 20 years later, I finally learned the difference after taking my first computer
-                    architecture class, CS61C.
-                </p>
-            </div>
-            <img src="./images/computer.JPG" alt="William Nguyen as a baby" class="block-content">
-        </div>
-    </div>
-
-    <div class="timeline-row">
-        <div class="timeline-block">
-            <img src="./images/nature.JPG" alt="William Nguyen as a baby" class="block-content">
-            <div class="block-content">
-                <h1 class="timeline-block-title">Willy Explores the Wilderness!</h1>
-                <p class="timeline-content">I love spending time outdoors, exploring, and just wandering, without the
-                    intent of finding something particular. The most beautiful things in life appear when you let your
-                    mind wander. Growing up, I didn't care about what other people were doing or thinking. I was in my
-                    own little world just taking it all in. My love for exploring led to curiosity, which bred
-                    creativity and serendipity.</p>
-                <p class="timeline-content">When I'm not working, you can find me going for a walk, going down random
-                    streets, and talking to random people to stumble upon something new.</p>
+        <div class="timeline-row">
+            <div class="date-block">SEPT 2006</div>
+            <div class="timeline-block">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">My First Computer!</h1>
+                    <p class="timeline-content">Since I was a kid, I LOVED to play. I played everything, from Mario to
+                        multiplication games on a light-up toy to board games like Exploding Kittens with my family. My
+                        parents wanted me to be curious growing up so
+                        instead of playing with just stuffed animals, they let me play with electronic devices like the
+                        toy
+                        computer shown in the image, a light-up keyboard piano, and finally my very own laptop.
+                    </p>
+                    <p class="timeline-content"> I still reminisce on the days my dad would warn me about viruses
+                        and teach me about the difference between memory and RAM. As a kid, everything went into one ear
+                        and
+                        out the other, but 20 years later, I finally learned the difference after taking my first
+                        computer
+                        architecture class, CS61C.
+                    </p>
+                </div>
+                <img src="./images/computer.JPG" alt="William Nguyen as a baby" class="block-content">
             </div>
         </div>
-        <div class="date-block">JULY 2011</div>
-    </div>
 
-    <div class="timeline-row">
-        <div class="date-block" style="height: 500px;">DEC 2018</div>
-        <div class="timeline-block" style="height: 500px;">
-            <div class="block-content" style="flex: 1;">
-                <h1 class="timeline-block-title">My First YouTube Video!</h1>
-                <p class="timeline-content">One winter break in my sophomore year of high school, I was scrolling
-                    through my old iPad. As I was going through, I found a bunch of really funny clips of myself from
-                    when I was little. I cherished the videos so much and wished that I recorded myself more as I was
-                    growing up. At that moment, I realized that every moment you don't record is a moment you'll never
-                    be able to look back on.</p>
-                <p class="timeline-content">From there, I picked up my laptop, opened iMovie, and began editing my old
-                    videos in the hopes of preserving my memories with my friends in family. On my YouTube, you'll find
-                    content ranging from cooking tutorials, piano videos, and event recaps. Take a look at my channel
-                    and give me a subscribe!</p>
+        <div class="timeline-row">
+            <div class="timeline-block">
+                <img src="./images/nature.JPG" alt="William Nguyen as a baby" class="block-content">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">Willy Explores the Wilderness!</h1>
+                    <p class="timeline-content">I love spending time outdoors, exploring, and just wandering, without
+                        the
+                        intent of finding something particular. The most beautiful things in life appear when you let
+                        your
+                        mind wander. Growing up, I didn't care about what other people were doing or thinking. I was in
+                        my
+                        own little world just taking it all in. My love for exploring led to curiosity, which bred
+                        creativity and serendipity.</p>
+                    <p class="timeline-content">When I'm not working, you can find me going for a walk, going down
+                        random
+                        streets, and talking to random people to stumble upon something new.</p>
+                </div>
             </div>
-            <iframe width="560px" src="https://www.youtube.com/embed/yr4a4DAXqdc?si=MLnCv-VMIS1sxxk_"
-                class="block-content" frameborder="0" allowfullscreen></iframe>
+            <div class="date-block">JULY 2011</div>
+        </div>
+
+        <div class="timeline-row">
+            <div class="date-block" style="height: 500px;">DEC 2018</div>
+            <div class="timeline-block" style="height: 500px;">
+                <div class="block-content" style="flex: 1;">
+                    <h1 class="timeline-block-title">My First YouTube Video!</h1>
+                    <p class="timeline-content">One winter break in my sophomore year of high school, I was scrolling
+                        through my old iPad. As I was going through, I found a bunch of really funny clips of myself
+                        from
+                        when I was little. I cherished the videos so much and wished that I recorded myself more as I
+                        was
+                        growing up. At that moment, I realized that every moment you don't record is a moment you'll
+                        never
+                        be able to look back on.</p>
+                    <p class="timeline-content">From there, I picked up my laptop, opened iMovie, and began editing my
+                        old
+                        videos in the hopes of preserving my memories with my friends in family. On my YouTube, you'll
+                        find
+                        content ranging from cooking tutorials, piano videos, and event recaps. Take a look at my
+                        channel
+                        and give me a subscribe!</p>
+                </div>
+                <iframe width="560px" src="https://www.youtube.com/embed/yr4a4DAXqdc?si=MLnCv-VMIS1sxxk_"
+                    class="block-content" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="timeline-row">
+            <div class="timeline-block" style="height: 400px;">
+                <img src="./images/berkeley_pic.JPG" alt="William Nguyen as a baby" class="block-content">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">I Become a BEAR!</h1>
+                    <p class="timeline-content">I never planned to go to Berkeley. My dream school was UCLA, but I am
+                        forever grateful that I became a bear. College is all about finding your fit, finding yourself,
+                        and
+                        pushing yourself to do uncomfortable things. It's about growth. Right in the center of Silicon
+                        Valley, surrounded by other brilliant minds, accomplished professors, and curious voices, I've
+                        had
+                        the to meet extraordinary peers, join talented clubs, and even found my own startup.</p>
+                    <p class="timeline-content">At Cal, I'm studying Electrical Engineering & Computer Science at the
+                        College of Engineering and Business Administration at the Haas School of Business. I've had the
+                        honor of being VP in the <a href="https://vsa.berkeley.edu/">Vietnamese Student Association</a>,
+                        a founder in <a href="https://www.entrepreneursatberkeley.com/">Entrepreneurs @ Berkeley</a>,
+                        and
+                        External VP in <a href="https://codebase.berkeley.edu/">Codebase</a>. My favorite things to do
+                        in
+                        Berkeley are hosting a rootop BBQ social, meeting other founders at entrepreneurship mixers, and
+                        catching up with some friends at Berkeley's AMAZING restaurants.</p>
+                </div>
+            </div>
+            <div class="date-block" style="height: 400px;">AUG 2021</div>
+        </div>
+
+        <div class="timeline-row">
+            <div class="date-block">MAY 2023</div>
+            <div class="timeline-block">
+                <img src="./images/aveva.JPG" alt="William Nguyen as a baby" class="block-content">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">My Parents Finally Get Their ROI</h1>
+                    <p class="timeline-content">That's me at my first real job!! In Summer of 2023, I had the
+                        opportunity to
+                        intern at Aveva as a software development intern. At Aveva, I learned about industrial software,
+                        networked with industry leaders in the domain, and created an internal web app for tracking
+                        Azure
+                        Cloud Resources and automatically scaling them. </p>
+                    <p class="timeline-content">From going to Tahoe with interns all the way from South Carolina, Texas,
+                        and
+                        Irvine, to touching a codebase with over 30,000 lines of code, to finally making my own money,
+                        this
+                        was one of my most impactful summers, and one I'll never forget.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-row">
+            <div class="timeline-block" style="height:500px;">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">My First Baby</h1>
+                    <p class="timeline-content">Woah there, if you thought I got someone pregnant in college, you're way
+                        off! My first baby in college was BudBase, a social media app designed to help you revive your
+                        connections. The app is similar to Tinder, except it recommends people to you based on how long
+                        ago
+                        you've last seen them. Upon recommendation, the user can choose a date and time to meet up with
+                        their connection and keep the friendship alive.
+                    </p>
+                    <p class="timeline-content">I had never thought of myself as a founder, let alone CEO, but BudBase
+                        was
+                        my first taste of venture capital and affirmation that I could be a successful founder.
+                    </p>
+                </div>
+                <img src="./images/budbase_pitch.jpeg" alt="William Nguyen as a baby" class="block-content">
+            </div>
+            <div class="date-block" style="height:500px;">AUG 2023</div>
+        </div>
+
+        <div class="timeline-row">
+            <div class="date-block" style="height:500px;">NOW</div>
+            <div class="timeline-block" style="height: 500px;">
+                <div class="block-content">
+                    <h1 class="timeline-block-title">What Am I Up To Now?</h1>
+                    <p class="timeline-content">Nowadays, I'm super interested in product management, software
+                        engineering,
+                        and diversity/equity/inclusion, particularly in the gaming, entertainment, and social networking
+                        industry. During the weekdays, you can find me studying for my classes, taking online courses on
+                        LinkedIn Learning, going to the gym, or working on a new venture. In my free time, I LOVE
+                        hosting
+                        social events, whether it be Burgers and Burglars (escape room and burgers after), Board Games &
+                        Boba, or Stories and Stirfry. I also love to play sports (badminton, volleyball, frisbee) and
+                        edit
+                        videos for my YouTube channel. Above all, I love meeting new people.</p>
+                    <p class="timeline-content">If you're based in the Bay Area, don't hesitate to reach out! I'd love
+                        to
+                        meet up and hear your story :D</p>
+                </div>
+                <img src="./images/chill.JPG" alt="William Nguyen as a baby" class="block-content">
+            </div>
         </div>
     </div>
 
-    <div class="timeline-row">
-        <div class="timeline-block" style="height: 400px;">
-            <img src="./images/berkeley_pic.JPG" alt="William Nguyen as a baby" class="block-content">
-            <div class="block-content">
-                <h1 class="timeline-block-title">I Become a BEAR!</h1>
-                <p class="timeline-content">I never planned to go to Berkeley. My dream school was UCLA, but I am
-                    forever grateful that I became a bear. College is all about finding your fit, finding yourself, and
-                    pushing yourself to do uncomfortable things. It's about growth. Right in the center of Silicon
-                    Valley, surrounded by other brilliant minds, accomplished professors, and curious voices, I've had
-                    the to meet extraordinary peers, join talented clubs, and even found my own startup.</p>
-                <p class="timeline-content">At Cal, I'm studying Electrical Engineering & Computer Science at the
-                    College of Engineering and Business Administration at the Haas School of Business. I've had the
-                    honor of being VP in the <a href="https://vsa.berkeley.edu/">Vietnamese Student Association</a>,
-                    a founder in <a href="https://www.entrepreneursatberkeley.com/">Entrepreneurs @ Berkeley</a>, and
-                    External VP in <a href="https://codebase.berkeley.edu/">Codebase</a>. My favorite things to do in
-                    Berkeley are hosting a rootop BBQ social, meeting other founders at entrepreneurship mixers, and
-                    catching up with some friends at Berkeley's AMAZING restaurants.</p>
-            </div>
-        </div>
-        <div class="date-block" style="height: 400px;">AUG 2021</div>
-    </div>
-
-    <div class="timeline-row">
-        <div class="date-block">MAY 2023</div>
-        <div class="timeline-block">
-            <img src="./images/aveva.JPG" alt="William Nguyen as a baby" class="block-content">
-            <div class="block-content">
-                <h1 class="timeline-block-title">My Parents Finally Get Their ROI</h1>
-                <p class="timeline-content">That's me at my first real job!! In Summer of 2023, I had the opportunity to
-                    intern at Aveva as a software development intern. At Aveva, I learned about industrial software,
-                    networked with industry leaders in the domain, and created an internal web app for tracking Azure
-                    Cloud Resources and automatically scaling them. </p>
-                <p class="timeline-content">From going to Tahoe with interns all the way from South Carolina, Texas, and
-                    Irvine, to touching a codebase with over 30,000 lines of code, to finally making my own money, this
-                    was one of my most impactful summers, and one I'll never forget.</p>
-            </div>
-        </div>
-    </div>
-    <div class="timeline-row">
-        <div class="timeline-block" style="height:500px;">
-            <div class="block-content" >
-                <h1 class="timeline-block-title">My First Baby</h1>
-                <p class="timeline-content">Woah there, if you thought I got someone pregnant in college, you're way
-                    off! My first baby in college was BudBase, a social media app designed to help you revive your
-                    connections. The app is similar to Tinder, except it recommends people to you based on how long ago
-                    you've last seen them. Upon recommendation, the user can choose a date and time to meet up with
-                    their connection and keep the friendship alive.
-                </p>
-                <p class="timeline-content">I had never thought of myself as a founder, let alone CEO, but BudBase was
-                    my first taste of venture capital and affirmation that I could be a successful founder.
-                </p>
-            </div>
-            <img src="./images/budbase_pitch.jpeg" alt="William Nguyen as a baby" class="block-content">
-        </div>
-        <div class="date-block" style="height:500px;">AUG 2023</div>
-    </div>
-
-    <div class="timeline-row">
-        <div class="date-block" style="height:500px;">NOW</div>
-        <div class="timeline-block" style="height: 500px;">
-            <div class="block-content">
-                <h1 class="timeline-block-title">What Am I Up To Now?</h1>
-                <p class="timeline-content">Nowadays, I'm super interested in product management, software engineering,
-                    and diversity/equity/inclusion, particularly in the gaming, entertainment, and social networking
-                    industry. During the weekdays, you can find me studying for my classes, taking online courses on
-                    LinkedIn Learning, going to the gym, or working on a new venture. In my free time, I LOVE hosting
-                    social events, whether it be Burgers and Burglars (escape room and burgers after), Board Games &
-                    Boba, or Stories and Stirfry. I also love to play sports (badminton, volleyball, frisbee) and edit
-                    videos for my YouTube channel. Above all, I love meeting new people.</p>
-                <p class="timeline-content">If you're based in the Bay Area, don't hesitate to reach out! I'd love to
-                    meet up and hear your story :D</p>
-            </div>
-            <img src="./images/chill.JPG" alt="William Nguyen as a baby" class="block-content">
-        </div>
-    </div>
-    </div>
-
-    <!-- loads bubbles into the background -->
     <div class="bubble-container" id="bubble-container"></div>
 </body>
 

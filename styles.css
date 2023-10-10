@@ -176,6 +176,9 @@ h1 {
     margin-right: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px); /* Optional: Add a subtle vertical translation */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animation properties */
 }
 
 .timeline-block {
@@ -306,3 +309,9 @@ p {
     display: flex;
     flex-direction: row;
   }
+
+  .timeline-row.fadeIn {
+    opacity: 1;
+    transform: translateY(0); /* Reset the vertical translation */
+  }
+  
