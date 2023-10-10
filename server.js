@@ -3,9 +3,8 @@ const port = 3000;
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use(express.static('public'));
+app.use(express.static('.'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
