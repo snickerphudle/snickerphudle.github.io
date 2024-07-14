@@ -3610,3 +3610,11 @@ input, select, textarea {
 			}
 
 		}
+
+.work-title {
+	text-align: center;
+}
+
+html {
+	scroll-behavior: smooth;
+}
