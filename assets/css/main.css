@@ -3860,3 +3860,22 @@ html {
 	animation-delay: 1.5s;
 	text-align: center;
 }
+
+.two-columns {
+	display: flex;
+	flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  }
+  
+  .two-columns > div {
+	width: 50%; /* Each child takes up 50% of the container's width */
+	padding: 20px; /* Adjust padding as needed */
+  }
+  
+  @media (max-width: 1500px) { /* Adjust the max-width as needed */
+	.two-columns {
+	  flex-direction: column;
+	}
+	.two-columns > div {
+	  width: 100%; /* Each child takes up 100% of the container's width */
+	}
+  }
