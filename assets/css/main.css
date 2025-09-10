@@ -3721,22 +3721,22 @@ html {
 }
 
 #intro header h2 {
-	animation-delay: 0.5s;
+	animation-delay: 0.25s;
 	/* Starts after 0.5 seconds */
 }
 
 #intro header p:nth-of-type(1) {
-	animation-delay: 0.75s;
+	animation-delay: 0.5s;
 	/* Starts 1 second after the page loads */
 }
 
 #intro header p:nth-of-type(2) {
-	animation-delay: 1s;
+	animation-delay: .75s;
 	/* Starts 1.5 seconds after the page loads */
 }
 
 #intro header p:nth-of-type(3) {
-	animation-delay: 1.25s;
+	animation-delay: 1s;
 	/* Starts 2 seconds after the page loads */
 }
 
