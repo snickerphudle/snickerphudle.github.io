@@ -1,32 +1,38 @@
 // Minimal placeholder for Phase 0
 document.addEventListener('DOMContentLoaded', function() {
-	// IntersectionObserver to reveal elements quickly
-	var revealEls = document.querySelectorAll('.reveal');
-	if ('IntersectionObserver' in window) {
-		var io = new IntersectionObserver(function(entries, obs) {
-			entries.forEach(function(entry) {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('is-visible');
-					obs.unobserve(entry.target);
-					
-					// Trigger name bounce animation when hero becomes visible
-					if (entry.target.classList.contains('hero-grid')) {
-						animateName();
+		// IntersectionObserver to reveal elements quickly
+		var revealEls = document.querySelectorAll('.reveal');
+		if ('IntersectionObserver' in window) {
+			var io = new IntersectionObserver(function(entries, obs) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						obs.unobserve(entry.target);
+						
+						// Trigger name bounce animation when hero becomes visible
+						if (entry.target.classList.contains('hero-grid')) {
+							animateName();
+						}
+						
+						// Trigger metrics counter when metrics section becomes visible
+						if (entry.target.classList.contains('metrics-section')) {
+							animateCounters();
+						}
+						
+						// Start carousel animations when bio section becomes visible
+						if (entry.target.classList.contains('bio-grid')) {
+							startCarousels();
+						}
 					}
-					
-					// Trigger metrics counter when metrics section becomes visible
-					if (entry.target.classList.contains('metrics-section')) {
-						animateCounters();
-					}
-				}
-			});
-		}, { threshold: 0.15 });
-		revealEls.forEach(function(el) { io.observe(el); });
-	} else {
-		revealEls.forEach(function(el) { el.classList.add('is-visible'); });
-		animateName();
-		animateCounters();
-	}
+				});
+			}, { threshold: 0.15 });
+			revealEls.forEach(function(el) { io.observe(el); });
+		} else {
+			revealEls.forEach(function(el) { el.classList.add('is-visible'); });
+			animateName();
+			animateCounters();
+			startCarousels();
+		}
 	
 	// Animate name letters one by one
 	function animateName() {
@@ -117,6 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}, 600);
 		}
+	}
+	
+	// Start carousel animations
+	function startCarousels() {
+		// Carousels are already animated via CSS, but we can add any JS enhancements here
+		// For now, they'll start automatically when the section becomes visible
+		console.log('Carousels started');
 	}
 });
 
