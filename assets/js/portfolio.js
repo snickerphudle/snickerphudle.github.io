@@ -1,7 +1,9 @@
 // Minimal placeholder for Phase 0
 document.addEventListener('DOMContentLoaded', function() {
-		// IntersectionObserver to reveal elements quickly
-		var revealEls = document.querySelectorAll('.reveal');
+		// Small delay to ensure page is fully loaded before starting animations
+		setTimeout(function() {
+			// IntersectionObserver to reveal elements quickly
+			var revealEls = document.querySelectorAll('.reveal');
 		if ('IntersectionObserver' in window) {
 			var io = new IntersectionObserver(function(entries, obs) {
 				entries.forEach(function(entry) {
@@ -10,29 +12,36 @@ document.addEventListener('DOMContentLoaded', function() {
 						obs.unobserve(entry.target);
 						
 						// Trigger name bounce animation when hero becomes visible
-						if (entry.target.classList.contains('hero-grid')) {
+						if (entry.target.classList.contains('hero')) {
 							animateName();
-						}
-						
-						// Trigger metrics counter when metrics section becomes visible
-						if (entry.target.classList.contains('metrics-section')) {
 							animateCounters();
 						}
 						
 						// Start carousel animations when bio section becomes visible
-						if (entry.target.classList.contains('bio-grid')) {
+						if (entry.target.classList.contains('bio-section')) {
 							startCarousels();
 						}
+						
+						// Start brand bubbles animation when brands section becomes visible
+						if (entry.target.classList.contains('brands-section')) {
+							startBrandBubbles();
+						}
+						
+		// Initialize video carousel when video showcase section becomes visible
+		if (entry.target.classList.contains('video-showcase-section')) {
+			initVideoCarousel();
+			initVideoPlayback();
+		}
 					}
 				});
 			}, { threshold: 0.15 });
 			revealEls.forEach(function(el) { io.observe(el); });
 		} else {
+			// Fallback for browsers without IntersectionObserver
+			// Just make elements visible without triggering animations immediately
 			revealEls.forEach(function(el) { el.classList.add('is-visible'); });
-			animateName();
-			animateCounters();
-			startCarousels();
 		}
+		}, 100); // Small delay to ensure page is loaded
 	
 	// Animate name letters one by one
 	function animateName() {
@@ -130,6 +139,117 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Carousels are already animated via CSS, but we can add any JS enhancements here
 		// For now, they'll start automatically when the section becomes visible
 		console.log('Carousels started');
+	}
+	
+	// Start brand bubbles animation
+	function startBrandBubbles() {
+		// Brand bubbles are already animated via CSS, but we can add any JS enhancements here
+		// For now, they'll start automatically when the section becomes visible
+		console.log('Brand bubbles started');
+	}
+	
+	// Initialize video carousel
+	function initVideoCarousel() {
+		var carousel = document.querySelector('.video-carousel');
+		var track = document.querySelector('.video-track');
+		var prevBtn = document.querySelector('.prev-btn');
+		var nextBtn = document.querySelector('.next-btn');
+		var videoItems = document.querySelectorAll('.video-item');
+		
+		if (!carousel || !track || !prevBtn || !nextBtn) return;
+		
+		var currentIndex = 0;
+		var itemsPerView = window.innerWidth <= 480 ? 1 : window.innerWidth <= 980 ? 2 : 3;
+		var totalItems = videoItems.length;
+		var maxIndex = Math.max(0, totalItems - itemsPerView);
+		
+		function updateCarousel() {
+			var translateX = -currentIndex * (100 / itemsPerView);
+			track.style.transform = 'translateX(' + translateX + '%)';
+			
+			// Update button states
+			prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+			nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+		}
+		
+		function nextSlide() {
+			if (currentIndex < maxIndex) {
+				currentIndex++;
+				updateCarousel();
+			}
+		}
+		
+		function prevSlide() {
+			if (currentIndex > 0) {
+				currentIndex--;
+				updateCarousel();
+			}
+		}
+		
+		// Event listeners
+		nextBtn.addEventListener('click', nextSlide);
+		prevBtn.addEventListener('click', prevSlide);
+		
+		// Handle window resize
+		window.addEventListener('resize', function() {
+			itemsPerView = window.innerWidth <= 480 ? 1 : window.innerWidth <= 980 ? 2 : 3;
+			maxIndex = Math.max(0, totalItems - itemsPerView);
+			if (currentIndex > maxIndex) {
+				currentIndex = maxIndex;
+			}
+			updateCarousel();
+		});
+		
+		// Initialize
+		updateCarousel();
+		
+		console.log('Video carousel initialized');
+	}
+
+	// Initialize video playback functionality
+	function initVideoPlayback() {
+		var videoThumbnails = document.querySelectorAll('.video-thumbnail');
+		
+		videoThumbnails.forEach(function(thumbnail) {
+			var video = thumbnail.querySelector('video');
+			var playButton = thumbnail.querySelector('.play-button');
+			
+			if (video && playButton) {
+				// Click to play/pause
+				thumbnail.addEventListener('click', function(e) {
+					e.preventDefault();
+					
+					if (video.paused) {
+						video.play();
+						playButton.style.display = 'none';
+					} else {
+						video.pause();
+						playButton.style.display = 'flex';
+					}
+				});
+				
+				// Show play button when video ends
+				video.addEventListener('ended', function() {
+					playButton.style.display = 'flex';
+				});
+				
+				// Pause other videos when one starts playing
+				video.addEventListener('play', function() {
+					videoThumbnails.forEach(function(otherThumbnail) {
+						var otherVideo = otherThumbnail.querySelector('video');
+						if (otherVideo && otherVideo !== video && !otherVideo.paused) {
+							otherVideo.pause();
+							var otherPlayButton = otherThumbnail.querySelector('.play-button');
+							if (otherPlayButton) {
+								otherPlayButton.style.display = 'flex';
+							}
+						}
+					});
+				});
+			}
+		});
+		
+		console.log('Video playback initialized');
 	}
 });
 
